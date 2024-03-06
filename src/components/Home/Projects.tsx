@@ -77,7 +77,10 @@ function Projects() {
   }, [inView, setIndex]);
 
   return (
-    <section className="px-48 lg:px-28 smm:px-0 pt-[28vh]" id="projects">
+    <section
+      className="px-48 lg:px-28 smm:px-0 pt-[28vh] xs:pt-[20vh]"
+      id="projects"
+    >
       <section className="space-x-5 flex" ref={ref}>
         <section className="w-full space-y-5">
           {dataLeft.map((card, i) => (

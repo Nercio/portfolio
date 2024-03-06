@@ -24,7 +24,7 @@ function Header() {
     );
   };
   return (
-    <section className="flex z-20 flex-row w-full px-48 lg:px-28 md:flex-col pt-20  justify-between  md:items-center md:space-y-10 fixed left-0 top-0   bg-gradient-to-b from-zinc-200 pb-6  backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/10 dark:from-inherit md:pb-5 md:pt-5">
+    <section className="flex z-20 flex-row w-full px-48 lg:px-28 md:flex-col pt-16  justify-between  md:items-center md:space-y-5 fixed left-0 top-0   bg-gradient-to-b from-zinc-200 pb-6  backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/10 dark:from-inherit md:pb-3 md:pt-5 md:px-0">
       <p className="font-mono text-sm">NNN</p>
 
       <motion.nav className="flex  md:justify-center">

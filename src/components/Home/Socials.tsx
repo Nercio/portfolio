@@ -40,15 +40,17 @@ function Socials() {
     <section className="flex flex-row space-x-3">
       <Tip tooltip="Github">
         <Link
-          href={""}
+          href={"https://github.com/Nercio"}
           className="bg-black dark:bg-light rounded-[4px] p-[5px]"
+          target="_blank"
         >
           <FaGithub size={25} className="text-white dark:text-black" />
         </Link>
       </Tip>
       <Tip tooltip="Twitter">
         <Link
-          href={""}
+          href={"https://twitter.com/nercionordino"}
+          target="_blank"
           className="bg-black dark:bg-light rounded-[4px] p-[5px]"
         >
           <FaTwitter size={25} className="text-white dark:text-black" />
@@ -56,7 +58,8 @@ function Socials() {
       </Tip>
       <Tip tooltip="Instagram">
         <Link
-          href={""}
+          href={"https://www.instagram.com/nnnercio_/"}
+          target="_blank"
           className="bg-black dark:bg-light rounded-[4px] p-[5px]"
         >
           <FaInstagram size={25} className="text-white dark:text-black" />
@@ -64,8 +67,9 @@ function Socials() {
       </Tip>
       <Tip tooltip="LinkedIn">
         <Link
-          href={""}
+          href={"https://www.linkedin.com/in/nercio-nhatave-8329211a3/"}
           className="bg-black dark:bg-light rounded-[4px] p-[5px]"
+          target="_blank"
         >
           <FaLinkedinIn size={25} className="text-white dark:text-black" />
         </Link>
