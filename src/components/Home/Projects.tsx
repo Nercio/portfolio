@@ -74,7 +74,7 @@ function Projects() {
     if (inView) {
       setIndex(2);
     }
-  }, [inView]);
+  }, [inView, setIndex]);
 
   return (
     <section className="px-48 lg:px-28 smm:px-0 pt-[28vh]" id="projects">

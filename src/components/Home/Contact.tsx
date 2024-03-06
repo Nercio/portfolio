@@ -33,7 +33,7 @@ function Contact() {
     if (inView) {
       setIndex(3);
     }
-  }, [inView]);
+  }, [inView, setIndex]);
 
   return (
     <section
@@ -86,11 +86,9 @@ function Contact() {
             rows={5}
             required
           ></textarea>
-          <MagnetEffect>
-            <button className="bg-black dark:bg-light w-24 rounded-lg">
-              <p className="text-white dark:text-black my-2">Enviar</p>
-            </button>
-          </MagnetEffect>
+          <button className="bg-black dark:bg-light w-24 rounded-lg">
+            <p className="text-white dark:text-black my-2">Enviar</p>
+          </button>
         </form>
       </section>
     </section>

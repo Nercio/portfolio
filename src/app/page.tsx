@@ -1,13 +1,12 @@
 "use client";
 
 import Contact from "@/components/Home/Contact";
-import Footer from "@/components/Home/Footer";
 import Header from "@/components/Home/Header";
 import Hero from "@/components/Home/Hero";
 import Projects from "@/components/Home/Projects";
-import Skills from "@/components/Home/SkillsV2";
+import Skills from "@/components/Home/Skills";
 import Loader from "@/components/Loader";
-import { AnimatePresence, motion, AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 
