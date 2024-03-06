@@ -1,7 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Socials } from "./Socials";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import MagnetEffect from "../MagnetEffect";
+import { useInView } from "react-intersection-observer";
+import { useRecoilState } from "recoil";
+import { tabToggleState } from "@/utils/recoil";
 
 function Skills() {
   const container = {
@@ -23,6 +26,15 @@ function Skills() {
       },
     },
   };
+  const [index, setIndex] = useRecoilState(tabToggleState);
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      setIndex(1);
+    }
+  }, [inView]);
+
   return (
     <section
       id="skills"
@@ -30,12 +42,13 @@ function Skills() {
     >
       <motion.section
         variants={container}
-        className=" w-full  grid grid-cols-2 gap-y-5"
+        className=" w-full  grid grid-cols-2 gap-y-5 smm:grid-cols-1 smm:w-[90%]"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
+        ref={ref}
       >
-        <motion.div className="w-[50%]" variants={item}>
+        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%]" variants={item}>
           <p className="font-mono text-sm">Frontend</p>
           <div className="grid grid-cols-4 gap-3">
             <MagnetEffect>
@@ -70,7 +83,7 @@ function Skills() {
             </MagnetEffect>
           </div>
         </motion.div>
-        <motion.div className="w-[50%]" variants={item}>
+        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%]" variants={item}>
           <p className="font-mono text-sm">Design</p>
           <div className="grid grid-cols-4 gap-5">
             <MagnetEffect>
@@ -128,7 +141,7 @@ function Skills() {
             </MagnetEffect>
           </div>
         </motion.div>
-        <motion.div className="w-[50%]" variants={item}>
+        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%]" variants={item}>
           <p className="font-mono text-sm">Linguagens</p>
           <div className="grid grid-cols-4 gap-5">
             <MagnetEffect>
@@ -164,7 +177,7 @@ function Skills() {
             </MagnetEffect>
           </div>
         </motion.div>
-        <motion.div className="w-[50%]" variants={item}>
+        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%]" variants={item}>
           <p className="font-mono text-sm">Ferramentas</p>
           <div className="grid grid-cols-4 gap-5">
             <MagnetEffect>
@@ -199,7 +212,7 @@ function Skills() {
             </MagnetEffect>
           </div>
         </motion.div>
-        <motion.div className="w-[50%]" variants={item}>
+        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%]" variants={item}>
           <p className="font-mono text-sm">Inteligência Artificial</p>
           <div className="grid grid-cols-4 gap-5">
             <MagnetEffect>

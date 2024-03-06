@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { tabToggleState } from "@/utils/recoil";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import { Socials } from "./Socials";
 
 const dataLeft = [
   {
@@ -50,7 +55,7 @@ function Projects() {
   }) => {
     return (
       <div className={`rounded-2xl ${height}  w-full hover:cursor-pointer`}>
-        {/* <Link href={link}>
+        <Link href={link}>
           <Image
             className="rounded-md object-cover w-full h-full"
             src={img}
@@ -58,18 +63,26 @@ function Projects() {
             width={1000}
             height={1000}
           />
-        </Link> */}
+        </Link>
       </div>
     );
   };
+  const [index, setIndex] = useRecoilState(tabToggleState);
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      setIndex(2);
+    }
+  }, [inView]);
+
   return (
     <section className="px-48 lg:px-28 smm:px-0 pt-[28vh]" id="projects">
-      {/* <p className="font-mono text-sm">Projects</p> */}
-      <section className="space-x-5 flex">
+      <section className="space-x-5 flex" ref={ref}>
         <section className="w-full space-y-5">
-          {dataLeft.map((card, index) => (
+          {dataLeft.map((card, i) => (
             <Card
-              key={index}
+              key={i}
               img={card.img}
               link={card.link}
               height={card.height}
@@ -77,9 +90,9 @@ function Projects() {
           ))}
         </section>
         <section className="w-full space-y-5">
-          {dataRight.map((card, index) => (
+          {dataRight.map((card, i) => (
             <Card
-              key={index}
+              key={i}
               img={card.img}
               link={card.link}
               height={card.height}

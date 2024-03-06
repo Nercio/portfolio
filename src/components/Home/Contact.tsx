@@ -1,8 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Socials } from "./Socials";
 import MagnetEffect from "../MagnetEffect";
+import { useRecoilState } from "recoil";
+import { useInView } from "react-intersection-observer";
+import { tabToggleState } from "@/utils/recoil";
 
 function Contact() {
   const handleOpenMaps = () => {
@@ -23,14 +26,26 @@ function Contact() {
       });
   };
 
+  const [index, setIndex] = useRecoilState(tabToggleState);
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      setIndex(3);
+    }
+  }, [inView]);
+
   return (
     <section
       id="contact"
-      className="space-x-6 pb-32 pt-[28vh]  flex px-48 lg:px-28 smm:px-0 md:items-center justify-center "
+      className="space-x-6 md:space-x-0- md:space-y-10 md:pb-0 md:h-screen pb-32 pt-[28vh] md:pt-0  flex px-48 lg:px-28 smm:px-0 md:items-center justify-center md:flex-col md:justify-center "
     >
-      <section className=" w-full justify-between flex flex-col">
-        <section>
-          <h1 className="font-semibold text-2xl">Get in touch </h1>
+      <section
+        className=" w-full justify-between flex flex-col md:justify-center md:items-center md:space-y-5"
+        ref={ref}
+      >
+        <section className="md:text-center">
+          <h1 className="font-semibold text-2xl">Get in touch </h1>{" "}
           <div className="space-y-2">
             <p
               onClick={() => handleCopyToClipboard("nhatave10@gmail.com")}
@@ -49,7 +64,7 @@ function Contact() {
         </section>
         <Socials />
       </section>
-      <section className=" w-full">
+      <section className=" w-full md:w-[80%]">
         <form action="" className="flex flex-col space-y-5">
           <input
             type="text"
