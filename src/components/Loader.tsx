@@ -7,11 +7,11 @@ function Loader({ setLoading }: any) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ ease: "backOut", duration: 3 }}
+        transition={{ ease: "anticipate", duration: 3 }}
         onAnimationComplete={() => {
           setLoading(false);
         }}
-        layoutId="nnn"
+        // layoutId="nnn"
       >
         <p className="font-mono text-sm">NNN</p>
       </motion.div>

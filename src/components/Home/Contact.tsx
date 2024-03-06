@@ -7,6 +7,8 @@ import { useRecoilState } from "recoil";
 import { useInView } from "react-intersection-observer";
 import { tabToggleState } from "@/utils/recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { IoMdCopy } from "react-icons/io";
+import { Alert, Tooltip } from "@material-tailwind/react";
 
 type Inputs = {
   name: string;
@@ -26,13 +28,14 @@ function Contact() {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("Email copied to clipboard!");
+        setOpen(true);
       })
       .catch((error) => {
         console.error("Error copying email to clipboard: ", error);
       });
   };
 
+  const [open, setOpen] = React.useState<boolean>(false);
   const [index, setIndex] = useRecoilState(tabToggleState);
   const { ref, inView } = useInView();
 
@@ -46,6 +49,28 @@ function Contact() {
     window.location.href = `mailto:nhatave10@gmail.com?body=${data.message}`;
   };
 
+  const Tip = ({ children }: any) => {
+    return (
+      <Tooltip
+        className="bg-transparent"
+        content={
+          <div className="dark:bg-light bg-black mt-2 p-2 rounded-md">
+            <p className="text-white font-semibold text-xs dark:text-black">
+              {open ? "Copiado" : "Copiar"}
+            </p>
+          </div>
+        }
+        animate={{
+          mount: { scale: 1, y: 0 },
+          unmount: { scale: 0, y: -25 },
+        }}
+        placement="bottom"
+      >
+        {children}
+      </Tooltip>
+    );
+  };
+
   return (
     <section
       id="contact"
@@ -56,13 +81,16 @@ function Contact() {
         ref={ref}
       >
         <section className="md:text-center">
-          <h1 className="font-semibold text-2xl">Get in touch </h1>{" "}
+          <h1 className="font-semibold text-2xl">Get in touch</h1>{" "}
           <div className="space-y-2">
             <p
-              onClick={() => handleCopyToClipboard("nhatave10@gmail.com")}
-              className="cursor-pointer font-mono text-sm mt-10"
+              onClick={() => {
+                handleCopyToClipboard("nhatave10@gmail.com");
+              }}
+              onMouseOut={() => setOpen(false)}
+              className="cursor-pointer flex font-mono text-sm mt-10"
             >
-              nhatave10@gmail.com
+              <Tip>nhatave10@gmail.com</Tip>
             </p>
             <p className="font-mono text-sm">+258 849 448 994</p>
             <p
@@ -103,7 +131,7 @@ function Contact() {
             rows={5}
             required
           ></textarea>
-          <button className="bg-black dark:bg-light w-24 rounded-lg">
+          <button className="bg-black dark:bg-light w-24 rounded-lg hover:-translate-y-0.5 transition-all">
             <p className="text-white dark:text-black my-2">Enviar</p>
           </button>
         </form>

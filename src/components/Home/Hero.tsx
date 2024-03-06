@@ -27,8 +27,6 @@ function Hero() {
         transition={{
           ease: "easeOut",
           duration: 0.5,
-          delayChildren: 0.4,
-          staggerChildren: 0.1,
         }}
         ref={ref}
       >
