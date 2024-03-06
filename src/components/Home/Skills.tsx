@@ -39,7 +39,7 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="h-[100vh] flex  px-48 lg:px-28 smm:px-0 md:items-center justify-center items-center"
+      className="h-[100vh] md:pt-[18vh] md:h-full flex  px-48 lg:px-28 smm:px-0 md:items-center justify-center items-center"
     >
       <motion.section
         variants={container}

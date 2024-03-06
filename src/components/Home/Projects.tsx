@@ -78,7 +78,7 @@ function Projects() {
 
   return (
     <section
-      className="px-48 lg:px-28 smm:px-0 pt-[28vh] xs:pt-[20vh]"
+      className="px-48 lg:px-28 smm:px-0 pt-[28vh] xs:pt-[18vh]"
       id="projects"
     >
       <section className="space-x-5 flex" ref={ref}>

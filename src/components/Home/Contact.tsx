@@ -49,7 +49,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="space-x-6 md:space-x-0  md:space-y-10 pb-32 pt-[28vh]  flex px-48 lg:px-28 smm:px-0 md:items-center justify-center md:flex-col md:justify-center md:pt-[20vh]  md:pb-10 xs:pb-32"
+      className="space-x-6 md:space-x-0  md:space-y-10 pb-32 pt-[28vh]  flex px-48 lg:px-28 smm:px-0 md:items-center justify-center md:flex-col md:justify-center md:pt-[18vh]  md:pb-10 xs:pb-32"
     >
       <section
         className=" w-full justify-between flex flex-col md:justify-center md:items-center md:space-y-5"
