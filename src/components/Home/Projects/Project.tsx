@@ -32,7 +32,7 @@ function Project({
   return (
     <section
       id="hero"
-      className="h-[100vh] flex px-48 lg:px-28 md:pt-[18vh] smm:px-0 md:items-center justify-center flex-col snap-center"
+      className="h-[100vh] flex px-48 lg:px-28 smm:px-0 md:items-center justify-center flex-col snap-center"
     >
       <motion.div
         className="space-y-10  items-center md:flex flex-col"
