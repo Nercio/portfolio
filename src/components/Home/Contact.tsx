@@ -9,6 +9,7 @@ import { tabToggleState } from "@/utils/recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoMdCopy } from "react-icons/io";
 import { Alert, Tooltip } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 
 type Inputs = {
   name: string;
@@ -72,9 +73,16 @@ function Contact() {
   };
 
   return (
-    <section
+    <motion.section
       id="contact"
       className="space-x-6 md:space-x-0  md:space-y-10 pb-32 pt-[28vh]  flex px-48 lg:px-28 smm:px-0 md:items-center justify-center md:flex-col md:justify-center md:pt-[18vh]  md:pb-10 xs:pb-32"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        ease: "easeInOut",
+        duration: 0.5,
+      }}
     >
       <section
         className=" w-full justify-between flex flex-col md:justify-center md:items-center md:space-y-5"
@@ -136,7 +144,7 @@ function Contact() {
           </button>
         </form>
       </section>
-    </section>
+    </motion.section>
   );
 }
 

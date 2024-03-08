@@ -39,7 +39,7 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="h-[100vh] md:pt-[18vh] md:h-full flex  px-48 lg:px-28 smm:px-0 md:items-center justify-center items-center"
+      className="h-[100vh] md:pt-[18vh] flex  px-48 lg:px-28 smm:px-0 md:items-center justify-center items-center"
     >
       <motion.section
         variants={container}
@@ -49,7 +49,10 @@ function Skills() {
         viewport={{ once: true }}
         ref={ref}
       >
-        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%]" variants={item}>
+        <motion.div
+          className="w-[50%] xl:w-[80%] md:w-[70%] md:text-center"
+          variants={item}
+        >
           <p className="font-mono text-sm">Frontend</p>
           <div className="grid grid-cols-4 gap-3">
             <MagnetEffect>
