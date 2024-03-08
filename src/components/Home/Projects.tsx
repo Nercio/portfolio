@@ -1,61 +1,64 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import { tabToggleState } from "@/utils/recoil";
+import { openModalState, tabToggleState } from "@/utils/recoil";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { Socials } from "./Socials";
+import Modal from "../Project";
 
-const dataLeft = [
+const data = [
   {
     img: "https://firebasestorage.googleapis.com/v0/b/solid-x-armor.appspot.com/o/img2.jpg?alt=media&token=d23b8a21-ba3d-4396-b505-a067d58c2c90",
     link: "",
-    height: "bg-gradient-to-br from-slate-300 to-pink-700 h-[440px]",
+    height: "h-[440px]",
   },
   {
     img: "https://firebasestorage.googleapis.com/v0/b/solid-x-armor.appspot.com/o/img3.jpg?alt=media&token=b29164bd-a363-480f-8e31-8820de8ff83f",
     link: "",
-    height: "bg-gradient-to-br from-amber-600 to-indigo-900 h-[350px]",
+    height: "h-[350px]",
   },
   {
     img: "https://firebasestorage.googleapis.com/v0/b/solid-x-armor.appspot.com/o/img1.jpg?alt=media&token=eae32b81-b049-4054-bb0c-95294ee34f12",
     link: "",
-    height: "bg-gradient-to-r from-blue-300 to-emerald-300 h-96",
+    height: "h-96",
   },
-];
-
-const dataRight = [
   {
     img: "https://firebasestorage.googleapis.com/v0/b/solid-x-armor.appspot.com/o/img2.jpg?alt=media&token=d23b8a21-ba3d-4396-b505-a067d58c2c90",
     link: "",
-    height: "bg-gradient-to-tr from-green-800 to-amber-200 h-96",
+    height: "h-96",
   },
   {
     img: "https://firebasestorage.googleapis.com/v0/b/solid-x-armor.appspot.com/o/img3.jpg?alt=media&token=b29164bd-a363-480f-8e31-8820de8ff83f",
     link: "",
-    height: "bg-gradient-to-r from-green-800 to-blue-400 h-[500px]",
+    height: "h-[500px]",
   },
   {
     img: "https://firebasestorage.googleapis.com/v0/b/solid-x-armor.appspot.com/o/img1.jpg?alt=media&token=eae32b81-b049-4054-bb0c-95294ee34f12",
     link: "",
-    height: "bg-gradient-to-b from-cyan-300 to-violet-700  h-96",
+    height: "h-96",
   },
 ];
 
 function Projects() {
   const Card = ({
     img,
-    link,
+    click,
     height,
+    layoutId,
   }: {
     img: string;
-    link: string;
+    click: () => void;
     height: string;
+    layoutId: number;
   }) => {
     return (
-      <div className={`rounded-2xl ${height}  w-full hover:cursor-pointer`}>
-        <Link href={link}>
+      <div
+        className={`rounded-2xl ${height} bg-white/30 dark:bg-white/5  w-full hover:cursor-pointer`}
+        onClick={click}
+      >
+        <motion.div layoutId={`img-${layoutId}`}>
           <Image
             className="rounded-md object-cover w-full h-full"
             src={img}
@@ -63,18 +66,22 @@ function Projects() {
             width={1000}
             height={1000}
           />
-        </Link>
+        </motion.div>
       </div>
     );
   };
   const [index, setIndex] = useRecoilState(tabToggleState);
   const { ref, inView } = useInView();
+  const [opens, setOpens] = useRecoilState(openModalState);
 
   useEffect(() => {
     if (inView) {
       setIndex(2);
     }
   }, [inView, setIndex]);
+
+  const firstHalf = data.slice(0, Math.ceil(data.length / 2));
+  const secondHalf = data.slice(Math.ceil(data.length / 2));
 
   return (
     <section
@@ -83,26 +90,29 @@ function Projects() {
     >
       <section className="space-x-5 flex" ref={ref}>
         <section className="w-full space-y-5">
-          {dataLeft.map((card, i) => (
+          {firstHalf.map((card, i) => (
             <Card
               key={i}
               img={card.img}
-              link={card.link}
+              click={() => setOpens(true)}
               height={card.height}
+              layoutId={i}
             />
           ))}
         </section>
         <section className="w-full space-y-5">
-          {dataRight.map((card, i) => (
+          {secondHalf.map((card, i) => (
             <Card
               key={i}
               img={card.img}
-              link={card.link}
+              click={() => setOpens(true)}
               height={card.height}
+              layoutId={i + 1}
             />
           ))}
         </section>
       </section>
+      {opens && <Modal desc="" img="" link="" name="" layoutId={1} />}
     </section>
   );
 }

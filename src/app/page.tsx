@@ -47,14 +47,3 @@ export default function Home() {
     </RecoilRoot>
   );
 }
-
-// "use client";
-
-// import Loader from "@/components/Loader";
-// import React from "react";
-
-// function Home() {
-//   return <Loader />;
-// }
-
-// export default Home;
