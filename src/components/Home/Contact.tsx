@@ -47,6 +47,7 @@ function Contact({ socials, pageInfo }: Props) {
       setIndex(3);
     }
   }, [inView, setIndex]);
+
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     window.location.href = `mailto:${pageInfo?.email}.com?body=${data.message}`;
