@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { groq } from "next-sanity";
-import { PageInfo, SocialsProps } from "../../../../typings";
+import { SocialsProps } from "../../../../typings";
 import { client } from "../../../../sanity/lib/client";
 
 const query = groq` 
