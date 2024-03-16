@@ -68,7 +68,7 @@ function Project({
               <h1 className="text-2xl font-semibold md:mt-5">
                 {project[idx]?.name}
               </h1>
-              <p className="font-mono text-sm xl:w-[80%]">
+              <p className="font-mono text-xs xl:w-[80%]">
                 {project[idx]?.description}
               </p>
               <div className="space-y-3 inline-block md:flex md:space-y-0 md:space-x-3">
@@ -77,7 +77,7 @@ function Project({
                     key={index}
                     className={`flex group items-center justify-start md:text-center md:justify-center ${contentPosition}`}
                   >
-                    <p className="font-mono text-sm text-gray-500 dark:text-gray-400 ">
+                    <p className="font-mono text-xs text-gray-500 dark:text-gray-400 ">
                       {item}
                     </p>
                   </div>

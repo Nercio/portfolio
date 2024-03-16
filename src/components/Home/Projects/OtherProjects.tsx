@@ -73,7 +73,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
                     key={tech_index}
                     className={`items-center justify-start md:text-center md:justify-center`}
                   >
-                    <p className="font-mono text-sm text-gray-500 dark:text-gray-400 ">
+                    <p className="font-mono text-xs text-gray-500 dark:text-gray-400 ">
                       {tech_item}
                     </p>
                   </div>
