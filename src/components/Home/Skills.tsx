@@ -26,6 +26,7 @@ function Skills() {
       },
     },
   };
+
   const [index, setIndex] = useRecoilState(tabToggleState);
   const { ref, inView } = useInView();
 
