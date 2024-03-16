@@ -54,6 +54,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
           <Link
             href={`${item?.url}`}
             className="transition-all hover:-translate-y-3"
+            key={index}
           >
             <motion.div
               className="w-full h-full xl:h-[370px] mdd:h-[330px] bg-white/50 dark:bg-gray-900 rounded-md p-5 space-y-5 relative"
@@ -68,7 +69,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
               <div className="flex flex-row space-x-3">
                 {item.tech.map((tech_item, tech_index) => (
                   <div
-                    key={index}
+                    key={tech_index}
                     className={`items-center justify-start md:text-center md:justify-center`}
                   >
                     <p className="font-mono text-sm text-gray-500 dark:text-gray-400 ">
