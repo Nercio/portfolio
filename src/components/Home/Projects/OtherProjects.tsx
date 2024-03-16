@@ -58,7 +58,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
             key={index}
           >
             <motion.div
-              className="w-full h-full xl:h-[370px] mdd:h-[330px] bg-white/50 dark:bg-gray-900 rounded-md p-5 space-y-5 relative"
+              className="w-full h-full xl:h-[370px] mdd:h-[330px] bg-white/50 dark:bg-[#111] rounded-md p-5 space-y-5 relative"
               variants={items}
             >
               <CiFolderOn
@@ -66,7 +66,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
                 size={50}
               />
               <h1 className="text-2xl font-semibold md:mt-5">{item.name}</h1>
-              <p className="font-mono text-sm">{item?.description}</p>
+              <p className="font-mono text-xs">{item?.description}</p>
               <div className="flex flex-row space-x-3">
                 {item.tech.map((tech_item, tech_index) => (
                   <div
