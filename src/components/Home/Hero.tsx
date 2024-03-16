@@ -40,7 +40,6 @@ function Hero({ socials, pageInfo }: Props) {
           className="font-semibold text-2xl leading-10 md:text-center xs:text-base"
           dangerouslySetInnerHTML={{ __html: pageInfo?.title ?? "" }}
         ></h1>
-        <p>{process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}</p>
         <p className="w-[60%] xl:w-[80%] md:text-center md:w-full xs:text-sm font-mono text-sm">
           {pageInfo?.quote}
         </p>
