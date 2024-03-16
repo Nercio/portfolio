@@ -83,7 +83,7 @@ function Project({
                   </div>
                 ))}
               </div>
-              <Link href={`${project[idx]?.url}`}>
+              <Link href={`${project[idx]?.url}`} target="_blank">
                 <FiExternalLink className="text-gray-500 hover:text-black  dark:text-gray-400 dark:hover:text-white transition-all" />
               </Link>
             </div>

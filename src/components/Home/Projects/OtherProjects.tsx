@@ -40,7 +40,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
   return (
     <section
       id="hero"
-      className="h-[100vh] xl:h-full flex px-48 lg:px-28 smm:px-0  md:items-center justify-center flex-col snap-center"
+      className="h-[100vh] xl:h-full flex px-48 lg:px-28 smm:px-0  md:items-center justify-center flex-col snap-center xl:snap-none"
     >
       <motion.section
         className="w-full h-[50%]  grid grid-cols-3 gap-5 xl:grid-cols-2  xl:h-full xl:pt-[18vh] xl:pb-[18vh] mdd:grid-cols-1 md:w-[80%] xs:w-[90%]"
@@ -54,6 +54,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
           <Link
             href={`${item?.url}`}
             className="transition-all hover:-translate-y-3"
+            target="_blank"
             key={index}
           >
             <motion.div
@@ -78,7 +79,10 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
                   </div>
                 ))}
               </div>
-              <FiExternalLink className=" absolute bottom-7 text-gray-500 hover:text-black  dark:text-gray-400 dark:hover:text-white transition-all" />
+              <FiExternalLink
+                className=" absolute bottom-7 text-gray-500 hover:text-black  dark:text-gray-400 dark:hover:text-white transition-all"
+                target="_blank"
+              />
             </motion.div>
           </Link>
         ))}

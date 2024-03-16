@@ -42,6 +42,7 @@ function Socials({ socials }: Props) {
         <Link
           href={link}
           className="bg-black dark:bg-light rounded-[4px] p-[5px]"
+          target="_blank"
         >
           {children}
         </Link>
