@@ -1,8 +1,13 @@
+"use client";
+
 import { ThemeProvider, Tooltip } from "@material-tailwind/react";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { SocialsProps } from "../../../typings";
-import { SocialIcon } from "react-social-icons";
 
 type Props = {
   socials: SocialsProps[];
@@ -12,9 +17,11 @@ function Socials({ socials }: Props) {
   const Tip = ({
     children,
     tooltip,
+    link,
   }: {
     children: ReactNode;
     tooltip: string;
+    link: string;
   }) => {
     return (
       <Tooltip
@@ -32,33 +39,29 @@ function Socials({ socials }: Props) {
         }}
         placement="bottom"
       >
-        {children}
+        <Link
+          href={link}
+          className="bg-black dark:bg-light rounded-[4px] p-[5px]"
+        >
+          {children}
+        </Link>
       </Tooltip>
     );
   };
-
   return (
     <section className="flex flex-row space-x-3">
-      {socials?.map((item: SocialsProps, index) => (
-        <Tip tooltip={item.name} key={index}>
-          <Link
-            href={item.url}
-            className="bg-black dark:bg-light rounded-[4px]"
-            target="_blank"
-          >
-            <SocialIcon
-              url={item.url}
-              as="div"
-              bgColor="transparent"
-              fgColor="black"
-              className="text-white dark:text-black   "
-              style={{
-                margin: -5,
-              }}
-            />
-          </Link>
-        </Tip>
-      ))}
+      <Tip tooltip={`${socials[1]?.name}`} link={`${socials[1]?.url}`}>
+        <FaGithub size={25} className="text-white dark:text-black" />
+      </Tip>
+      <Tip tooltip={`${socials[2]?.name}`} link={`${socials[2]?.url}`}>
+        <FaTwitter size={25} className="text-white dark:text-black" />
+      </Tip>
+      <Tip tooltip={`${socials[3]?.name}`} link={`${socials[3]?.url}`}>
+        <FaInstagram size={25} className="text-white dark:text-black" />
+      </Tip>
+      <Tip tooltip={`${socials[0]?.name}`} link={`${socials[0]?.url}`}>
+        <FaLinkedinIn size={25} className="text-white dark:text-black" />
+      </Tip>
     </section>
   );
 }

@@ -68,7 +68,9 @@ function Project({
               <h1 className="text-2xl font-semibold md:mt-5">
                 {project[idx]?.name}
               </h1>
-              <p className="font-mono text-sm">{project[idx]?.description}</p>
+              <p className="font-mono text-sm xl:w-[80%]">
+                {project[idx]?.description}
+              </p>
               <div className="space-y-3 inline-block md:flex md:space-y-0 md:space-x-3">
                 {project[idx]?.tech.map((item, index) => (
                   <div

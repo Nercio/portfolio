@@ -1,6 +1,7 @@
 import React from "react";
 import Project from "./Project";
 import { ProjectsProps } from "../../../../typings";
+import OtherProjects from "./OtherProjects";
 
 type Props = {
   project: ProjectsProps[];
@@ -28,6 +29,7 @@ function Projects({ project }: Props) {
         project={project}
         idx={2}
       />
+      <OtherProjects project={project} />
     </div>
   );
 }

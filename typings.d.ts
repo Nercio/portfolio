@@ -35,6 +35,7 @@ export interface ProjectsProps extends SanityBody {
   imagesGallery: Image[];
   url: string;
   tech: string[];
+  variants: string;
 }
 
 export interface SocialsProps extends SanityBody {
