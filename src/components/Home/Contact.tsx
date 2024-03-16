@@ -1,15 +1,12 @@
-"use client";
-
 import React, { useEffect } from "react";
 import { Socials } from "./Socials";
-import MagnetEffect from "../MagnetEffect";
 import { useRecoilState } from "recoil";
 import { useInView } from "react-intersection-observer";
 import { tabToggleState } from "@/utils/recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IoMdCopy } from "react-icons/io";
-import { Alert, Tooltip } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react";
 import { motion } from "framer-motion";
+import { PageInfoProps, SocialsProps } from "../../../typings";
 
 type Inputs = {
   name: string;
@@ -17,9 +14,14 @@ type Inputs = {
   message: string;
 };
 
-function Contact() {
+type Props = {
+  socials: SocialsProps[];
+  pageInfo: PageInfoProps | null;
+};
+
+function Contact({ socials, pageInfo }: Props) {
   const handleOpenMaps = () => {
-    const coordinates = "-25.95565960670027,32.5994637288719";
+    const coordinates = `${pageInfo?.coordinates.lat},${pageInfo?.coordinates.long}`;
     const encodedCoordinates = encodeURIComponent(coordinates);
     const mapUrl = `https://www.google.com/maps?q=${encodedCoordinates}`;
     window.open(mapUrl, "_blank");
@@ -47,10 +49,13 @@ function Contact() {
   }, [inView, setIndex]);
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    window.location.href = `mailto:nhatave10@gmail.com?body=${data.message}`;
+    window.location.href = `mailto:${pageInfo?.email}.com?body=${data.message}`;
   };
 
-  const Tip = ({ children }: any) => {
+  const latitude = Number(pageInfo?.coordinates?.lat)?.toFixed(4);
+  const longitude = Number(pageInfo?.coordinates?.long)?.toFixed(4);
+
+  const Tip = () => {
     return (
       <Tooltip
         className="bg-transparent"
@@ -67,7 +72,7 @@ function Contact() {
         }}
         placement="bottom"
       >
-        {children}
+        {pageInfo?.email}
       </Tooltip>
     );
   };
@@ -93,23 +98,23 @@ function Contact() {
           <div className="space-y-2">
             <p
               onClick={() => {
-                handleCopyToClipboard("nhatave10@gmail.com");
+                handleCopyToClipboard(`${pageInfo?.email}`);
               }}
               onMouseOut={() => setOpen(false)}
               className="cursor-pointer flex font-mono text-sm mt-10"
             >
-              <Tip>nhatave10@gmail.com</Tip>
+              <Tip />
             </p>
-            <p className="font-mono text-sm">+258 849 448 994</p>
+            <p className="font-mono text-sm">{pageInfo?.phoneNumber}</p>
             <p
               className="cursor-crosshair font-mono text-sm"
               onClick={handleOpenMaps}
             >
-              -25.9556 Lat, 32.5994 Lon
+              {latitude}, {longitude}
             </p>
           </div>
         </section>
-        <Socials />
+        <Socials socials={socials} />
       </section>
       <section className=" w-full md:w-[80%]">
         <form

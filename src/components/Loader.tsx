@@ -11,7 +11,6 @@ function Loader({ setLoading }: any) {
         onAnimationComplete={() => {
           setLoading(false);
         }}
-        // layoutId="nnn"
       >
         <p className="font-mono text-sm">NNN</p>
       </motion.div>

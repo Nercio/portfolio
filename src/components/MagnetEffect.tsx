@@ -2,7 +2,7 @@ import { ReactNode, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function MagnetEffect({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null); // Provide the correct type for the ref
+  const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -13,7 +13,7 @@ export default function MagnetEffect({ children }: { children: ReactNode }) {
         width: 0,
         left: 0,
         top: 0,
-      }; // Provide fallback values in case ref.current is null
+      };
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
     setPosition({ x: middleX, y: middleY });

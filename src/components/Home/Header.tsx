@@ -1,5 +1,3 @@
-"use client";
-
 import { tabToggleState } from "@/utils/recoil";
 import { motion } from "framer-motion";
 import Link from "next/link";

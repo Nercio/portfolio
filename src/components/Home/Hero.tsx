@@ -4,8 +4,14 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { tabToggleState } from "@/utils/recoil";
 import { useRecoilState } from "recoil";
+import { PageInfoProps, SocialsProps } from "../../../typings";
 
-function Hero() {
+type Props = {
+  socials: SocialsProps[];
+  pageInfo: PageInfoProps | null;
+};
+
+function Hero({ socials, pageInfo }: Props) {
   const [index, setIndex] = useRecoilState(tabToggleState);
   const { ref, inView } = useInView();
 
@@ -30,18 +36,15 @@ function Hero() {
         }}
         ref={ref}
       >
-        <h1 className="font-semibold text-2xl leading-10 md:text-center xs:text-base">
-          Olá. <br />
-          Chamo-me Nércio Nordino Nhatave. <br />
-          Software Developer. <br />
-        </h1>
+        <h1
+          className="font-semibold text-2xl leading-10 md:text-center xs:text-base"
+          dangerouslySetInnerHTML={{ __html: pageInfo?.title ?? "" }}
+        ></h1>
         <p className="w-[60%] xl:w-[80%] md:text-center md:w-full xs:text-sm font-mono text-sm">
-          Cada problema que você enfrenta é um enigma a ser desvendado, uma
-          oportunidade para aprimorar suas habilidades e aprender algo novo.
-          Abrace a frustração, pois ela é o trampolim para o crescimento.
+          {pageInfo?.quote}
         </p>
 
-        <Socials />
+        <Socials socials={socials} />
       </motion.div>
     </section>
   );

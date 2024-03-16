@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Socials } from "./Socials";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import MagnetEffect from "../MagnetEffect";
 import { useInView } from "react-intersection-observer";
@@ -49,10 +48,7 @@ function Skills() {
         viewport={{ once: true }}
         ref={ref}
       >
-        <motion.div
-          className="w-[50%] xl:w-[80%] md:w-[70%] md:text-center"
-          variants={item}
-        >
+        <motion.div className="w-[50%] xl:w-[80%] md:w-[70%] " variants={item}>
           <p className="font-mono text-sm">Frontend</p>
           <div className="grid grid-cols-4 gap-3">
             <MagnetEffect>
@@ -88,6 +84,15 @@ function Skills() {
                 height={200}
                 alt="img"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+                className="grayscale hover:grayscale-0 duration-300 transition "
+              />
+            </MagnetEffect>
+            <MagnetEffect>
+              <Image
+                width={200}
+                height={200}
+                alt="img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
                 className="grayscale hover:grayscale-0 duration-300 transition "
               />
             </MagnetEffect>

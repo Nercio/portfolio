@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["images.pexels.com", "firebasestorage.googleapis.com"], // Replace with the actual hostname
+    domains: [
+      "images.pexels.com",
+      "firebasestorage.googleapis.com",
+      "cdn.sanity.io",
+    ],
   },
 };
 
