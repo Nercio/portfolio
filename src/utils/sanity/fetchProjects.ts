@@ -1,12 +1,22 @@
 import { groq } from "next-sanity";
 import { ProjectsProps } from "../../../typings";
 import { client } from "../../../sanity/lib/client";
+
 const query = groq` 
-*[_type == "project"]
+  *[_type == "project"] 
 `;
 
 export const fetchProjects = async () => {
-  const projects: ProjectsProps[] = await client.fetch(query);
+  try {
+    const projects: ProjectsProps[] = await client.fetch(query);
 
-  return projects;
+    projects.sort((a, b) => {
+      return a._createdAt.localeCompare(b._createdAt);
+    });
+
+    return projects;
+  } catch (error) {
+    console.error("Error fetching or sorting projects:", error);
+    return [];
+  }
 };

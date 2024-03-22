@@ -31,4 +31,16 @@ export const project = {
       of: [{ type: "string" }],
     },
   ],
+  orderings: [
+    {
+      title: "Newest First",
+      name: "newestFirst",
+      by: [{ field: "_updatedAt", direction: "desc" }],
+    },
+    {
+      title: "Oldest First",
+      name: "oldestFirst",
+      by: [{ field: "_updatedAt", direction: "asc" }],
+    },
+  ],
 };

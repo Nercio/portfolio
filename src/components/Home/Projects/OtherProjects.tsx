@@ -50,7 +50,7 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
         whileInView="show"
         viewport={{ once: true }}
       >
-        {project?.map((item, index) => (
+        {project?.slice(3).map((item, index) => (
           <Link
             href={`${item?.url}`}
             className="transition-all hover:-translate-y-3"
@@ -67,13 +67,13 @@ function OtherProjects({ project }: { project: ProjectsProps[] }) {
               />
               <h1 className="text-2xl font-semibold md:mt-5">{item.name}</h1>
               <p className="font-mono text-xs">{item?.description}</p>
-              <div className="flex flex-row space-x-3">
+              <div className="flex flex-row space-x-3 pb-10">
                 {item.tech.map((tech_item, tech_index) => (
                   <div
                     key={tech_index}
                     className={`items-center justify-start md:text-center md:justify-center`}
                   >
-                    <p className="font-mono text-xs text-gray-500 dark:text-gray-400 ">
+                    <p className="font-mono text-xs text-gray-500 dark:text-gray-400">
                       {tech_item}
                     </p>
                   </div>

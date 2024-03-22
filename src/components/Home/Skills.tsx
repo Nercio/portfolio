@@ -255,6 +255,15 @@ function Skills() {
                 width={200}
                 height={200}
                 alt="img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                className="grayscale hover:grayscale-0 duration-300 transition "
+              />
+            </MagnetEffect>
+            <MagnetEffect>
+              <Image
+                width={200}
+                height={200}
+                alt="img"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sanity/sanity-original.svg"
                 className="grayscale hover:grayscale-0 duration-300 transition "
               />
