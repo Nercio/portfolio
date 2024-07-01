@@ -9,8 +9,6 @@ import Link from "next/link";
 import { ProjectsProps } from "../../../../typings";
 import { urlFor } from "../../../../sanity";
 
-const items = ["Next", "Typescript", "Tailwind"];
-
 type Props = {
   flexRow?: string;
   textPosition: string;
@@ -55,13 +53,15 @@ function Project({
           <motion.div
             className={`flex ${flexRow} md:flex-col md:items-center justify-between`}
           >
-            <Image
-              className="rounded-md object-cover w-[60%] md:w-[80%] xs:w-[90%] h-[50%] grayscale hover:grayscale-0 duration-300 transition"
-              src={`${urlFor(project[idx]?.imagesGallery[0])?.url()}`}
-              alt="card name"
-              width={1000}
-              height={1000}
-            />
+            {project[idx]?.imagesGallery[0] && (
+              <Image
+                className="rounded-md object-cover w-[60%] md:w-[80%] xs:w-[90%] h-[50%] grayscale hover:grayscale-0 duration-300 transition"
+                src={`${urlFor(project[idx]?.imagesGallery[0])?.url()}`}
+                alt="card name"
+                width={1000}
+                height={1000}
+              />
+            )}
             <div
               className={`flex flex-col justify-center space-y-5  ${textPosition} md:justify-center md:items-center md:text-center`}
             >

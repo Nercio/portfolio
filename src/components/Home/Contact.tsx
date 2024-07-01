@@ -73,7 +73,7 @@ function Contact({ socials, pageInfo }: Props) {
         }}
         placement="bottom"
       >
-        {pageInfo?.email}
+        nhatave10@gmail.com
       </Tooltip>
     );
   };

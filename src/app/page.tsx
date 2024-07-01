@@ -9,45 +9,41 @@ import Loader from "@/components/Loader";
 import { usePageInfo } from "@/hooks/usePageInfo";
 import { useProjects } from "@/hooks/useProjects";
 import { useSocials } from "@/hooks/useSocials";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { RecoilRoot } from "recoil";
+import { motion } from "framer-motion";
 
-// Define the component function
 function Home() {
   const socials = useSocials();
-  const pageInfo = usePageInfo();
-  const projects = useProjects();
-  const [loading, setLoading] = useState(true);
+  const { pageInfo, pageInfoLoading } = usePageInfo();
+  const { projects, projectLoading } = useProjects();
 
-  useEffect(() => {
-    loading
-      ? document.querySelector("body")?.classList.add("loading")
-      : document.querySelector("body")?.classList.remove("loading");
-  }, [loading]);
+  if (projectLoading && pageInfoLoading)
+    return (
+      <AnimatePresence>
+        <motion.div key="loader">
+          <Loader />
+        </motion.div>
+      </AnimatePresence>
+    );
 
   return (
     <RecoilRoot>
       <AnimatePresence>
-        {loading ? (
-          <motion.div key="loader">
-            <Loader setLoading={setLoading} />
-          </motion.div>
-        ) : (
-          <main className="h-screen scroll-smooth snap-y overflow-y-scroll  snap-mandatory ">
-            <Header />
-            <section className="snap-center">
-              <Hero socials={socials} pageInfo={pageInfo} />
-            </section>
-            <section className="snap-center">
-              <Skills />
-            </section>
-            <Projects project={projects} />
-            <section className="snap-center">
-              <Contact socials={socials} pageInfo={pageInfo} />
-            </section>
-          </main>
-        )}
+        <main className="h-screen scroll-smooth snap-y overflow-y-scroll  snap-mandatory ">
+          <Header />
+          <section className="snap-center">
+            <Hero socials={socials} pageInfo={pageInfo} />
+          </section>
+          <section className="snap-center">
+            <Skills />
+          </section>
+          <Projects project={projects} />
+          <section className="snap-center">
+            <Contact socials={socials} pageInfo={pageInfo} />
+          </section>
+        </main>
       </AnimatePresence>
     </RecoilRoot>
   );
